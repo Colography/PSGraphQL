@@ -224,7 +224,10 @@ function Invoke-GraphQLQuery {
 
         [Parameter(Mandatory = $false,
             ValueFromPipelineByPropertyName = $false,
-            Position = 9)][Alias("notls")][Switch]$SkipCertificateCheck
+            Position = 9)][Alias("notls")][Switch]$SkipCertificateCheck,
+        
+        [Parameter(Mandatory = $false)]
+        [int]$TimeoutSec = 100
     )
     BEGIN {
         # Return type when using the -Detailed switch:
@@ -322,6 +325,7 @@ function Invoke-GraphQLQuery {
             ContentType            = $ContentType
             ErrorAction            = "Stop"
             UseBasicParsing        = $true
+            ConnectionTimeoutSeconds = $TimeoutSec
         }
 
         # Skip TLS validation if PowerShell Core:
