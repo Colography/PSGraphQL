@@ -226,8 +226,10 @@ function Invoke-GraphQLQuery {
             ValueFromPipelineByPropertyName = $false,
             Position = 9)][Alias("notls")][Switch]$SkipCertificateCheck,
         
-        [Parameter(Mandatory = $false)]
-        [int]$TimeoutSec = 100
+        [Parameter(Mandatory = $false,
+            ValueFromPipelineByPropertyName = $false,
+            Position = 10)]
+        [int]$TimeoutSec = 180
     )
     BEGIN {
         # Return type when using the -Detailed switch:
